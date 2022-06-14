@@ -1,0 +1,26 @@
+def func(string: str):
+    """
+    N进制相减.
+    """
+    n_base, value1, value2 = string.split(' ')
+
+    # 1.检查开头的参数
+    if (len(value1) != 1 and value1.startswith('0')) or (len(value2) != 1 and value2.startswith('0')):
+        return -1
+
+    # 2.检查结尾的参数
+    try:
+        if value1.endswith('\0'):
+            value1 = int(value1[:-1])
+        if value2.endswith('\0'):
+            value2 = int(value2[:-1])
+
+        res = value1 - value2
+        
+    except Exception as ex:
+        return -1
+
+
+if __name__ == '__main__':
+    input_str = '2 11 1'
+    print(func(input_str))
